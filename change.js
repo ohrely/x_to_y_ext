@@ -4,21 +4,21 @@
 
 var elements = document.getElementsByTagName('*');
 
-var find = "Derek"
-var nreplace = "WUTTTT!!!??!?!??!!"
+var find = "Monty"
+var nreplace = "I love"
 
 for (var i = 0; i < elements.length; i++) {
     
     var element = elements[i];
-    // var new_text = element.textContent.split("Derek").join("WUTTTT!!!??!?!??!!");
 
-    // if (element.textContent !== text){
-    //     element.textContent = element.text
-    // }
+    for (var j = 0; j < element.childNodes.length; j++) {
+        var node = element.childNodes[j];
 
-    if (element.nodeType == 3) { // text node
-        if (element.indexOf(find) != -1) {
-            element.textContent = element.textContent.replace(find, nreplace);
+        if (node.nodeType === 3) {
+            if (node.textContent.indexOf(find) != -1) {
+                newNode = node.textContent.replace(find, nreplace);
+                element.replaceChild(document.createTextNode(newNode), node);
+            }
         }
     }
 }
