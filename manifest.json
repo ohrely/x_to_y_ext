@@ -33,7 +33,7 @@
   "content_scripts": [
     {
       "matches": ["http://www.google.com/*", "http://*/*", "https://*/*"],
-      "js": ["popup.js", "change.js"],
+      "js": ["popup.js", "change.js", "change2.js"],
       // "css": ["mystyles.css"],
       "run_at": "document_end"
     }

@@ -1,3 +1,5 @@
+console.log("Start");
+
 /* Creates treeWalker just for text nodes, modifies text in those nodes. */
 function walkTree(rootNode) {
     var treeWalker = document.createTreeWalker(
@@ -19,8 +21,9 @@ Calls findReplace on individual nodes.
 
 TODO: condensing - does this make sense as a seperate function, or should it be combined with replaceText?
 */
-function modText(textnode) {
-    textNode.nodeValue = findReplace(textnode.nodeValue);
+function modText(textNode) {
+    textNode.nodeValue = findReplace(textNode.nodeValue);
+    console.log(textNode);
 }
 
 
@@ -36,6 +39,12 @@ function findReplace(text) {
 
     text = text.replace(find, replace);
 
-    return text
+    return text;
 }
 
+
+function doItAll(doc){
+    walkTree(doc.body);
+}
+
+doItAll(document);
