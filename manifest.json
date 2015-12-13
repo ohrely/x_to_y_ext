@@ -32,10 +32,10 @@
 
   "content_scripts": [
     {
-      // "js": ["jquery.js", "myscript.js"],
+      "matches": ["http://www.google.com/*", "http://*/*", "https://*/*"],
+      "js": ["popup.js", "change.js"],
       // "css": ["mystyles.css"],
-      "matches": ["http://www.google.com/*"],
-      "js": ["popup.js"]
+      "run_at": "document_end"
     }
   ]
 }
