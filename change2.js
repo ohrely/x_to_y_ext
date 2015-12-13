@@ -14,10 +14,28 @@ function walkTree(rootNode) {
 }
 
 
-/* Modifies text nodes.
+/*
+Calls findReplace on individual nodes.
 
-TODO: modularity - should be built with find & replace variables from external source. */
-
+TODO: condensing - does this make sense as a seperate function, or should it be combined with replaceText?
+*/
 function modText(textnode) {
-
+    textNode.nodeValue = findReplace(textnode.nodeValue);
 }
+
+
+/*
+Modifies text nodes. 
+
+TODO: modularity - should be built with find & replace variables from external source.
+TODO: handle cases
+*/
+function findReplace(text) {
+    var find = "Python";
+    var replace = "Lamp";
+
+    text = text.replace(find, replace);
+
+    return text
+}
+
