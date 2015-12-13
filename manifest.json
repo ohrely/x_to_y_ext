@@ -7,10 +7,10 @@
   "author": "Rebecca Ely (ohrely.com)",
   "version": "1.0",
 
-  // TODO: icons
-  "icons": { "16": "icon16.png",
-             "48": "icon48.png",
-            "128": "icon128.png" },
+  // // TODO: icons
+  // "icons": { "16": "icon16.png",
+  //            "48": "icon48.png",
+  //           "128": "icon128.png" },
 
   "browser_action": {
     "default_icon": "icon.png",
@@ -19,10 +19,10 @@
 
   // TODO: is a background page needed?
   // https://developer.chrome.com/extensions/background_pages
-  "background": {
-    // Recommended
-    "persistent": false
-  },
+  // "background": {
+  //   // Recommended
+  //   "persistent": false
+  // },
 
   "permissions": [
     "storage",
@@ -32,9 +32,10 @@
 
   "content_scripts": [
     {
+      // "js": ["jquery.js", "myscript.js"],
+      // "css": ["mystyles.css"],
       "matches": ["http://www.google.com/*"],
-      "css": ["mystyles.css"],
-      "js": ["jquery.js", "myscript.js"]
+      "js": ["popup.js"]
     }
-  ],
+  ]
 }
