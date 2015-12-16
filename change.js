@@ -1,24 +1,48 @@
-// TODO:
-// - accept multiple form inputs, modularity
-// - modify inputs to account for all caps cases
+/* Given text to change and new text, modify the DOM. */
 
-var elements = document.getElementsByTagName('*');
+/* Creates treeWalker just for text nodes, modifies text in those nodes. */
+function walkTree(rootNode) {
+    var treeWalker = document.createTreeWalker(
+        rootNode,
+        NodeFilter.SHOW_TEXT, // whatToShow
+        null, // filter: further filtering of nodes that pass whatToShow check
+        false // entityReferenceExpansion: discard subtree when node is discarded?   
+    ),
+    node;
 
-var find = "Monty"
-var nreplace = "I love"
-
-for (var i = 0; i < elements.length; i++) {
-    
-    var element = elements[i];
-
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
-
-        if (node.nodeType === 3) {
-            if (node.textContent.indexOf(find) != -1) {
-                newNode = node.textContent.replace(find, nreplace);
-                element.replaceChild(document.createTextNode(newNode), node);
-            }
-        }
+    while (node = treeWalker.nextNode()) {
+        modText(node);
     }
 }
+
+
+/*
+Calls findReplace on individual nodes.
+*/
+function modText(textNode) {
+    textNode.nodeValue = findReplace(textNode.nodeValue);
+    console.log(textNode);
+}
+
+
+/*
+Modifies text nodes. 
+
+TODO: modularity - should be built with find & replace variables from external source.
+TODO: handle cases (caps)
+*/
+function findReplace(text) {
+    var find = "Python";
+    var replace = "LAMP";
+
+    text = text.replace(find, replace);
+
+    return text;
+}
+
+
+function doItAll(doc){
+    walkTree(doc.body);
+}
+
+doItAll(document);
