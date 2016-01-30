@@ -32,6 +32,8 @@ TODO: modularity - should be built with find & replace variables from external s
 TODO: handle cases (caps)
 */
 function findReplace(text) {
+
+    // Retrieve from storage
     var find = "Python";
     var replace = "LAMP";
 
